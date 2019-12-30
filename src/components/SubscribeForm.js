@@ -29,13 +29,13 @@ class SubscribeForm extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group>
-          <Form.Label htmlFor="email">Email Address</Form.Label>
+          <Form.Label htmlFor="subscribe-email">Email Address</Form.Label>
           <Form.Input
-            type="text"
+            type="email"
             value={this.state.email}
             name="email"
             onChange={this.handleInputChange}
-            id="email"
+            id="subscribe-email"
           />
         </Form.Group>
 

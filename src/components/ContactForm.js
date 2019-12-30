@@ -9,7 +9,7 @@ class ContactForm extends React.Component {
 
     this.state = {
       name: "",
-      email: "",
+      _replyto: "",
       subject: "",
       message: "",
     }
@@ -39,43 +39,43 @@ class ContactForm extends React.Component {
         </Form.Info>
 
         <Form.Group>
-          <Form.Label htmlFor="name">Full Name</Form.Label>
+          <Form.Label htmlFor="contact-name">Full Name</Form.Label>
           <Form.Input
             value={this.state.name}
             onChange={this.handleInputChange}
             type="text"
             name="name"
-            id="name"
+            id="contact-name"
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="email">Email Address</Form.Label>
+          <Form.Label htmlFor="contact-email">Email Address</Form.Label>
           <Form.Input
             value={this.state.email}
             onChange={this.handleInputChange}
-            type="text"
+            type="email"
             name="_replyto"
-            id="email"
+            id="contact-email"
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="subject">Subject</Form.Label>
+          <Form.Label htmlFor="contact-subject">Subject</Form.Label>
           <Form.Input
             value={this.state.subject}
             onChange={this.handleInputChange}
             type="text"
             name="subject"
-            id="subject"
+            id="contact-subject"
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="message">Message</Form.Label>
+          <Form.Label htmlFor="contact-message">Message</Form.Label>
           <Form.TextArea
             value={this.state.message}
             onChange={this.handleInputChange}
             rows="10"
             name="message"
-            id="message"
+            id="contact-message"
           />
         </Form.Group>
 
