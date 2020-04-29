@@ -30,11 +30,14 @@ const Menu = styled.ul`
     overflow: scroll;
 
     ${props =>
-      !props.menuOpen
-        ? css`
+    !props.menuOpen
+      ? css`
             transform: translate(-110%);
           `
-        : ``}
+      : ``}
+
+
+        
   }
 `
 
@@ -59,12 +62,12 @@ const Backdrop = styled.div`
   @media screen and (max-width: 900px){
     display: block;
     ${props =>
-      props.show
-        ? css`
+    props.show
+      ? css`
             pointer-events: all;
             opacity: 0.5;
           `
-        : css`
+      : css`
             pointer-events: none;
             opacity: 0;
           `}

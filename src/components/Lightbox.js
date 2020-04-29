@@ -31,7 +31,14 @@ const Backdrop = styled.div`
 
 const LightBoxImg = styled(Img)`
   border: 1em solid white;
-  backface-visibility: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  ${(props) => props.show
+    ? css`
+      opacity: 0; 
+    `: ``
+  }
 `
 
 const LightBoxTitle = styled.h1`
@@ -63,20 +70,12 @@ const LightBoxMedia = styled.div`
   width: 100%;
   max-width: 900px;
 
-  transition: transform 0.5s ease-in-out;
   position: relative;
-  transform-style: preserve-3d;
+  opacity: 1;
 
   @media screen and (min-aspect-ratio: 2/3) {
     width: calc(100vh - 10em);
-  }
-
-  ${props =>
-    props.show
-      ? css`
-          transform: rotateX(180deg) rotateZ(180deg);
-        `
-      : ``}
+ }
 `
 
 const Ribbon = styled.div`
@@ -97,11 +96,9 @@ const LightBoxInfo = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
-  backface-visibility: hidden;
   top: 0;
   background-color: white;
   padding: 1em;
-  transform: rotateX(180deg) rotateZ(180deg);
 `
 
 const LightBoxNextButton = styled.button`
@@ -182,10 +179,11 @@ class Lightbox extends React.Component {
 
         <LightBoxMedia
           onClick={this.handleInfoClick.bind(this)}
-          show={this.state.showInfo}
         >
           <LightBoxInfo>{this.props.children}</LightBoxInfo>
-          <LightBoxImg fluid={this.props.media} alt={this.props.title} />
+          <LightBoxImg
+            show={this.state.showInfo}
+            fluid={this.props.media} alt={this.props.title} />
         </LightBoxMedia>
         <Ribbon>
           {this.props.showLeftBtn ? (
@@ -193,16 +191,16 @@ class Lightbox extends React.Component {
               <FaChevronLeft />
             </LightBoxNextButton>
           ) : (
-            <div />
-          )}
+              <div />
+            )}
           {this.props.ribbon}
           {this.props.showRightBtn ? (
             <LightBoxNextButton onClick={e => this.props.next(1)} right>
               <FaChevronRight />
             </LightBoxNextButton>
           ) : (
-            <div />
-          )}
+              <div />
+            )}
         </Ribbon>
       </div>
     )
